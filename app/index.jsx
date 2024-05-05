@@ -13,7 +13,7 @@ export default function App() {
 					height: "100%",
 				}}
 			>
-				<View className="flex w-full min-h-[85vh] justify-center  items-center px-4">
+				<View className="flex w-full min-h-[85vh] justify-center items-center px-4">
 					<Image
 						source={images.logo}
 						className="w-[130px] h-[84px]"
@@ -41,7 +41,7 @@ export default function App() {
 					</Text>
 					<CustomButton
 						title="Continue with Email"
-						handlePress={() => router.push('/sign-in')}
+						handlePress={() => router.push("/sign-in")}
 						containerStyles="w-full mt-7"
 					/>
 				</View>
