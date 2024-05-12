@@ -41,6 +41,7 @@ const SignIn = () => {
 			router.replace("/home");
 		} catch (error) {
 			Alert.alert("Error", error.message);
+			await signOut();
 		} finally {
 			setIsSubmitting(false);
 		}
