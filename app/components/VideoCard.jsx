@@ -1,40 +1,32 @@
 import { View, Text, Image, TouchableOpacity } from "react-native";
 import React, { useState } from "react";
 import { icons } from "../../constants";
+import { Video, ResizeMode } from "expo-av";
 
-const VideoCard = ({
-	video: {
-		title,
-		thumbnail,
-		video,
-		creator: { username, avatar },
-	},
-}) => {
+const VideoCard = ({ title, creator, avatar, thumbnail, video }) => {
 	const [play, setPlay] = useState(false);
-    console.log('Thumbnail', thumbnail)
+	// console.log("Thumbnail", thumbnail);
+
 	return (
 		<View className="flex-col items-center px-4 mb-14">
 			<View className="flex-row gap-3 items-start">
 				<View className="justify-center items-center flex-row flex-1">
 					<View className="w-[46px] h-[46px] rounded-lg border border-secondary justify-center items-center p-0.5">
 						<Image
-							source={{ uri: avatar }}
+							source={{ uri: avatar ?? "" }}
 							className="w-full h-full rounded-lg"
 							resizeMode="cover"
 						/>
 					</View>
 					<View className="justify-center flex-1 ml-3 gap-y-1">
-						<Text
-							className="text-white font-psemibold"
-							numberOfLines={1}
-						>
+						<Text className="text-white font-psemibold" numberOfLines={1}>
 							{title}
 						</Text>
 						<Text
 							className="text-xs text-gray-100 font-pregular"
 							numberOfLines={1}
 						>
-							{username}
+							{creator}
 						</Text>
 					</View>
 				</View>
@@ -44,7 +36,19 @@ const VideoCard = ({
 			</View>
 
 			{play ? (
-				<Text className="playing">Playing</Text>
+				// Will update it with the expo video
+				<Video
+					source={{ uri: video }}
+					className="w-full h-60 rounded-xl mt-3"
+					resizeMode={ResizeMode.CONTAIN}
+					useNativeControls
+					shouldPlay
+					onPlaybackStatusUpdate={(status) => {
+						if (status.didJustFinish) {
+							setPlay(false);
+						}
+					}}
+				/>
 			) : (
 				<TouchableOpacity
 					activeOpacity={0.7}

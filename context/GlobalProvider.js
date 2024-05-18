@@ -10,12 +10,12 @@ const GlobalProvider = ({ children }) => {
 	const [loading, setLoading] = useState(true);
 
 	useEffect(() => {
-		console.log('Get current User Called');
+		// console.log('Get current User Called');
 		
 		getCurrentUser()
 			.then((res) => {
 				if (res) {
-					console.log(res);
+					// console.log(res);
 					setIsLogged(true);
 					setUser(res);
 				} else {

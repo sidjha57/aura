@@ -13,11 +13,12 @@ import SearchInput from "../components/SearchInput";
 import Trending from "../components/Trending";
 import EmptyState from "../components/EmptyState";
 import useAppwrite from "../../lib/useAppwrite";
-import { getAllPosts } from "../../lib/appwrite";
+import { getAllPosts, getLatestPosts } from "../../lib/appwrite";
 import VideoCard from "../components/VideoCard";
 
 const Home = () => {
-	const { data: posts, refetch, isLoading } = useAppwrite(getAllPosts);
+	const { data: posts, refetch } = useAppwrite(getAllPosts);
+	const { data: latestPosts } = useAppwrite(getLatestPosts);
 
 	const [refreshing, setRefreshing] = useState(false);
 
@@ -33,7 +34,15 @@ const Home = () => {
 				data={posts}
 				// data={[]}
 				keyExtractor={(item) => item.$id}
-				renderItem={({ item }) => <VideoCard video={item} />}
+				renderItem={({ item }) => (
+					<VideoCard
+						title={item.title}
+						thumbnail={item.thumbnail}
+						video={item.video}
+						creator={item.creator.username}
+						avatar={item.creator.avatar}
+					/>
+				)}
 				ListHeaderComponent={() => (
 					<View className="my-6 px-4 space-y-6">
 						<View className="justify-between items-start flex-row mb-6">
@@ -59,7 +68,7 @@ const Home = () => {
 							<Text className="font-pregular text-lg text-gray-100 mb-3">
 								Latest Videos
 							</Text>
-							<Trending posts={[{ id: 1 }, { id: 2 }, { id: 3 }] ?? []} />
+							<Trending posts={latestPosts ?? []} />
 						</View>
 					</View>
 				)}
