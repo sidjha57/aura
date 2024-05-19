@@ -14,8 +14,7 @@
 		},
 		"assetBundlePatterns": ["**/*"],
 		"ios": {
-			"supportsTablet": true,
-			"package": "com.sid.aura"
+			"supportsTablet": true
 		},
 		"android": {
 			"adaptiveIcon": {
