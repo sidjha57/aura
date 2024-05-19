@@ -1,8 +1,7 @@
-import React, { useEffect } from "react";
-import { Slot, Stack, SplashScreen } from "expo-router";
-import { Text } from "react-native";
 import { useFonts } from "expo-font";
-import GlobalProvider  from "../context/GlobalProvider"; 
+import { SplashScreen, Stack } from "expo-router";
+import React, { useEffect } from "react";
+import GlobalProvider from "../context/GlobalProvider";
 
 SplashScreen.preventAutoHideAsync();
 

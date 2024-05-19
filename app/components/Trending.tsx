@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ResizeMode, Video } from "expo-av";
+import { AVPlaybackStatus, AVPlaybackStatusSuccess, ResizeMode, Video } from "expo-av";
 import * as Animatable from "react-native-animatable";
 import {
   FlatList,
@@ -43,7 +43,7 @@ const TrendingItem = ({ activeItem, item }) => {
           resizeMode={ResizeMode.CONTAIN}
           useNativeControls
           shouldPlay
-          onPlaybackStatusUpdate={(status) => {
+          onPlaybackStatusUpdate={(status: AVPlaybackStatusSuccess) => {
             if (status.didJustFinish) {
               setPlay(false);
             }
@@ -95,7 +95,7 @@ const Trending = ({ posts }) => {
       viewabilityConfig={{
         itemVisiblePercentThreshold: 70,
       }}
-      contentOffset={{ x: 170 }}
+      contentOffset={{ x: 170, y: 0 }}
     />
   );
 };

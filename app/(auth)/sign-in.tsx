@@ -1,13 +1,12 @@
-import { View, Text, ScrollView, Image, Alert } from "react-native";
-import React from "react";
+import { Link, router } from "expo-router";
+import React, { useState } from "react";
+import { Alert, Image, ScrollView, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { images } from "../../constants";
-import FormField from "../components/FormField";
-import { useState } from "react";
-import CustomButton from "../components/CustomButton";
-import { Link, router } from "expo-router";
-import { getCurrentUser, signIn, signOut } from "../../lib/appwrite";
 import { useGlobalContext } from "../../context/GlobalProvider";
+import { getCurrentUser, signIn, signOut } from "../../lib/appwrite";
+import CustomButton from "../components/CustomButton";
+import FormField from "../components/FormField";
 
 const SignIn = () => {
 	const [form, setForm] = useState({
@@ -32,7 +31,7 @@ const SignIn = () => {
 		setIsSubmitting(true);
 		try {
 			await signIn(form.email, form.password);
-			const result = getCurrentUser();
+			const result = await getCurrentUser();
 			setUser(result);
 			setIsLogged(true);
 
@@ -70,6 +69,7 @@ const SignIn = () => {
 						}
 						otherStyles="mt-7"
 						keyboardType="email-address"
+						placeholder={""}
 					/>
 
 					<FormField
@@ -83,6 +83,7 @@ const SignIn = () => {
 						}
 						otherStyles="mt-7"
 						keyboardType="password"
+						placeholder={""}
 					/>
 
 					<CustomButton

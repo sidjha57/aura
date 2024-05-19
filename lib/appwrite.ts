@@ -40,7 +40,7 @@ const avatars = new Avatars(client);
 const databases = new Databases(client);
 
 // Register user
-export const createUser = async (email, password, username) => {
+export const createUser = async (email: string, password: string, username: string) => {
 	try {
 		const newAccount = await account.create(
 			ID.unique(),
@@ -134,13 +134,13 @@ export const getAllPosts = async () => {
 	}
 };
 
-// Get All Posts
+// Get Latest Posts
 export const getLatestPosts = async () => {
 	try {
 		const posts = await databases.listDocuments(
 			databaseId,
 			videosCollectionId,
-			[Query.orderDesc("$createdAt", Query.limit(7))],
+			[Query.orderDesc("$createdAt"), Query.limit(7)],
 		);
 		return posts.documents;
 	} catch (error) {
