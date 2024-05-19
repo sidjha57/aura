@@ -20,12 +20,12 @@ Sentry.init({
 			// ...
 		}),
 	],
-	tracesSampleRate: 1.0,
-	_experiments: {
-		// profilesSampleRate is relative to tracesSampleRate.
-		// Here, we'll capture profiles for 100% of transactions.
-		profilesSampleRate: 1.0,
-	},
+	// tracesSampleRate: 1.0,
+	// _experiments: {
+	// 	// profilesSampleRate is relative to tracesSampleRate.
+	// 	// Here, we'll capture profiles for 100% of transactions.
+	// 	profilesSampleRate: 1.0,
+	// },
 });
 
 SplashScreen.preventAutoHideAsync();
@@ -73,7 +73,7 @@ const RootLayout = () => {
 				<Stack.Screen name="index" options={{ headerShown: false }} />
 				<Stack.Screen name="(auth)" options={{ headerShown: false }} />
 				<Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-				{/* <Stack.Screen name="/search/[query]" options={{ headerShown: false }} /> */}
+				<Stack.Screen name="search/[query]" options={{ headerShown: false }} />
 			</Stack>
 		</GlobalProvider>
 	);
