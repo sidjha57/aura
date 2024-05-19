@@ -7,9 +7,9 @@ import { useGlobalContext } from "../context/GlobalProvider";
 import CustomButton from "./components/CustomButton";
 
 export default function App() {
-	const {loading, isLogged} = useGlobalContext();
+	const { loading, isLogged } = useGlobalContext();
 
-	if (!loading && isLogged) return <Redirect href="/home" />
+	if (!loading && isLogged) return <Redirect href="/home" />;
 
 	return (
 		<SafeAreaView className="bg-primary h-full">
@@ -46,7 +46,10 @@ export default function App() {
 					</Text>
 					<CustomButton
 						title="Continue with Email"
-						handlePress={() => router.push("/sign-in")}
+						handlePress={() => {
+							console.log('Hanlde Press');
+							router.push("/sign-in");
+						}}
 						containerStyles="w-full mt-7"
 						isLoading={loading}
 					/>
