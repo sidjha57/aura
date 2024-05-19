@@ -9,6 +9,7 @@ import EmptyState from "../components/EmptyState";
 import VideoCard from "../components/VideoCard";
 import InfoBox from "../components/InfoBox";
 import { router } from "expo-router";
+import { StatusBar } from "expo-status-bar";
 
 const Profile = () => {
 	const { user, setUser, setIsLogged } = useGlobalContext();
@@ -22,7 +23,7 @@ const Profile = () => {
 		await signOut();
 		setUser(null);
 		setIsLogged(false);
-    
+
 		router.replace("/sign-in");
 	};
 
@@ -86,6 +87,7 @@ const Profile = () => {
 					/>
 				)}
 			/>
+			<StatusBar backgroundColor="#161622" style="light" />
 		</SafeAreaView>
 	);
 };

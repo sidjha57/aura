@@ -7,6 +7,7 @@ import { useGlobalContext } from "../../context/GlobalProvider";
 import { getCurrentUser, signIn, signOut } from "../../lib/appwrite";
 import CustomButton from "../components/CustomButton";
 import FormField from "../components/FormField";
+import { StatusBar } from "expo-status-bar";
 
 const SignIn = () => {
 	const [form, setForm] = useState({
@@ -27,7 +28,6 @@ const SignIn = () => {
 			email: form.email.toLowerCase(),
 		});
 
-		
 		setIsSubmitting(true);
 		try {
 			await signIn(form.email, form.password);
@@ -107,6 +107,7 @@ const SignIn = () => {
 					</View>
 				</View>
 			</ScrollView>
+			<StatusBar backgroundColor="#161622" style="light" />
 		</SafeAreaView>
 	);
 };

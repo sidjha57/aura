@@ -16,6 +16,7 @@ import useAppwrite from "../../lib/useAppwrite";
 import { getAllPosts, getLatestPosts } from "../../lib/appwrite";
 import VideoCard from "../components/VideoCard";
 import { useGlobalContext } from "../../context/GlobalProvider";
+import { StatusBar } from "expo-status-bar";
 
 const Home = () => {
 	const { user } = useGlobalContext();
@@ -84,6 +85,7 @@ const Home = () => {
 					<RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
 				}
 			/>
+			<StatusBar backgroundColor="#161622" style="light" />
 		</SafeAreaView>
 	);
 };

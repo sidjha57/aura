@@ -7,12 +7,13 @@ import useAppwrite from "../../lib/useAppwrite";
 import EmptyState from "../components/EmptyState";
 import SearchInput from "../components/SearchInput";
 import VideoCard from "../components/VideoCard";
+import { StatusBar } from "expo-status-bar";
 
 const Search = () => {
 	const { query } = useLocalSearchParams();
-	const updatedQuery = typeof query === "string" ? query : query[0]
+	const updatedQuery = typeof query === "string" ? query : query[0];
 	const { data: posts, refetch } = useAppwrite(() => searchPosts(updatedQuery));
-	
+
 	useEffect(() => {
 		refetch();
 	}, [query]);
@@ -39,9 +40,7 @@ const Search = () => {
 						</Text>
 						<Text className="text-2xl font-psemibold text-white">{query}</Text>
 						<View className="mt-6 mb-8">
-							<SearchInput
-								initialQuery={updatedQuery}
-							/>
+							<SearchInput initialQuery={updatedQuery} />
 						</View>
 					</View>
 				)}
@@ -52,6 +51,7 @@ const Search = () => {
 					/>
 				)}
 			/>
+			<StatusBar backgroundColor="#161622" style="light" />
 		</SafeAreaView>
 	);
 };

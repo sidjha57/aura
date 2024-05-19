@@ -7,6 +7,7 @@ import { useGlobalContext } from "../../context/GlobalProvider";
 import { createUser } from "../../lib/appwrite";
 import CustomButton from "../components/CustomButton";
 import FormField from "../components/FormField";
+import { StatusBar } from "expo-status-bar";
 
 const SignUp = () => {
 	const [form, setForm] = useState({
@@ -112,6 +113,7 @@ const SignUp = () => {
 					</View>
 				</View>
 			</ScrollView>
+			<StatusBar backgroundColor="#161622" style="light" />
 		</SafeAreaView>
 	);
 };
